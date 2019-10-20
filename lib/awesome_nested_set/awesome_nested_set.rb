@@ -66,7 +66,7 @@ module CollectiveIdea #:nodoc:
         # on creation, set automatically lft and rgt to the end of the tree
         before_create  :set_default_left_and_right
         before_save    :store_new_parent
-        after_save     :move_to_new_parent, :set_depth!
+        after_commit   :move_to_new_parent, :set_depth!
         before_destroy :destroy_descendants
 
         define_model_callbacks :move
